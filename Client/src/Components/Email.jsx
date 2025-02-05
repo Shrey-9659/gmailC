@@ -11,8 +11,10 @@ const Email = () => {
   return (
     <div
       onClick={openMail}
-      className=" flex items-center justify-between border-b border-gray-200 px-4 py-3 text-sm hover:cursor-pointer hover:shadow-md"
+      className=" flex items-center justify-between border-b border-gray-200
+       px-4 py-3 text-sm hover:cursor-pointer hover:shadow-md"
     >
+      {/* Child 1 */}
       <div className=" flex items-center gap-2 ">
         <div className=" text-gray-400">
           <MdCropSquare size={"22px"} />
@@ -25,6 +27,7 @@ const Email = () => {
         </div>
       </div>
 
+      {/* Child 2 */}
       <div className="flex-1 ml-4">
         <p>
           This is a sample data (Lorem ipsum dolor sit amet, consectetur
@@ -32,11 +35,12 @@ const Email = () => {
         </p>
       </div>
 
+      {/* Child 3 */}
       <div className=" flex-none text-gray-500 text-sm">
         <p>12 days ago</p>
       </div>
     </div>
-  );
+  );xc 
 };
 
 export default Email;

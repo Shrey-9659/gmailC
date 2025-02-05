@@ -17,6 +17,7 @@ const Mail = () => {
   const navigate = useNavigate();
   return (
     <div className="flex-1 bg-white rounded-xl mx-5">
+      {/* Child 1 */}
       <div className=" flex items-center justify-between px-4">
         <div className="flex items-center gap-2 text-gray-700 py-2">
           <div
@@ -59,7 +60,10 @@ const Mail = () => {
           />
         </div>
       </div>
+
+      {/* Child 2 */}
       <div className="h-[90vh] overflow-y-auto p-4">
+        {/* Sub Child 1 */}
         <div className="flex justify-between bg-white items-center gap-1">
           <div className="flex items-center gap-2">
             <h1 className=" text-xl font-medium">Subject</h1>
@@ -69,6 +73,8 @@ const Mail = () => {
             <p>12 days ago</p>
           </div>
         </div>
+
+        
         <div className="text-gray-500 text-sm">
           <h1 className="">shreykhandelwal@gmail.com</h1>
           <span>to me</span>

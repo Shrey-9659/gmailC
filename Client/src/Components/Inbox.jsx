@@ -3,6 +3,8 @@ import { FaCaretDown, FaUserFriends } from "react-icons/fa";
 import { IoMdMore, IoMdRefresh } from "react-icons/io";
 import { GoTag } from "react-icons/go";
 
+
+
 import {
   MdCropSquare,
   MdInbox,
@@ -30,7 +32,10 @@ const Inbox = () => {
   const [selected, setSelected] = useState(0);
   return (
     <div className=" flex-1 bg-white rounded-xl mx-5 ">
+      {/* Child 1 */}
       <div className="flex items-center justify-between px-4 my-2">
+
+        {/* Sub child 1 */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1">
             <MdCropSquare size={"22px"} />
@@ -43,6 +48,8 @@ const Inbox = () => {
             <IoMdMore size={"22px"} />
           </div>
         </div>
+
+        {/* Sub child 2 */}
         <div className="flex items-center gap-2">
           <span>1 to 50</span>
           <MdKeyboardArrowLeft className=" hover:text-gray-500" size={"22px"} />
@@ -52,6 +59,13 @@ const Inbox = () => {
           />
         </div>
       </div>
+
+
+
+
+
+
+      {/* Child 2 */}
       <div className="h-90vh overflow-y-auto">
         <div className=" flex items-center gap-1">
           {mailType.map((item, index) => (
@@ -69,7 +83,9 @@ const Inbox = () => {
           ))}
         </div>
       </div>
+      {/* Child 3 */}
       <Emails />
+
     </div>
   );
 };

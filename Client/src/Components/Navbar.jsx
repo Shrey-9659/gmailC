@@ -12,6 +12,8 @@ const Navbar = () => {
 
   return (
     <div className="flex items-center justify-between mx-3 h-16">
+
+
       <div className="flex items-center gap-10">
         <div className="flex items-center gap-2">
           <div className="rounded-full p-2 hover:bg-gray-200 cursor-pointer">
@@ -25,8 +27,10 @@ const Navbar = () => {
         />
         <h1 className=" text-2xl text-gray-500 font-medium">Gmail</h1>
       </div>
-      {user && (
-        <>
+
+      {/* {user && ( */}
+        {/* <> */}
+
           <div className="w-[50%] mr-60">
             <div className=" flex items-center bg-[#EAF1F8] px-2 py-3 rounded-full ">
               <IoMdSearch size={"24px"} className=" text-gray-700" />
@@ -37,6 +41,7 @@ const Navbar = () => {
               />
             </div>
           </div>
+
           <div className=" flex items-center gap-2">
             <div className=" p-3 rounded-full hover:bg-gray-200 cursor-pointer">
               <FaRegQuestionCircle size={"24px"} />
@@ -49,8 +54,9 @@ const Navbar = () => {
             </div>
             <Avatar googleId="118096717852922241760" size="40" round={true} />
           </div>
-        </>
-      )}
+          
+        {/* </> */}
+      {/* )} */}
     </div>
   );
 };
