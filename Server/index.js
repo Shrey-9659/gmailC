@@ -1,6 +1,6 @@
 const express = require("express")
 const dotenv = require("dotenv");
-const connectDB = require("./db/connectDb");
+const connectDb = require('./db/connectDb'); 
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 const userRoute = require("./routes/user.routes")
@@ -8,7 +8,7 @@ const emailRoute = require("./routes/email.routes")
 const PORT = 8080;
 
 dotenv.config();
-connectDB();
+connectDb();
 
 const app = express()
 
