@@ -1,6 +1,7 @@
 const express = require("express")
+const path = require("path")
 const dotenv = require("dotenv");
-const connectDb = require('./db/connectDb'); 
+const connectDb = require(path.join(__dirname, "db/connectDB.js")); 
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 const userRoute = require("./routes/user.routes")
