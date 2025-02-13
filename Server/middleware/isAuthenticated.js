@@ -7,7 +7,7 @@ const isAuthenticated = async(req, res, next) => {
             res.status(401).json({message : "User not authenticated"})
         }
         const decode = await jwt.verify(token, process.env.SECRET_KEY)
-        if(decode){
+        if(!decode){
             res.status(401).json({message : "Invalid token found"})
         }
         req.id = decode.userId;
@@ -16,3 +16,5 @@ const isAuthenticated = async(req, res, next) => {
         console.log(error)
     }
 }
+
+module.exports = isAuthenticated

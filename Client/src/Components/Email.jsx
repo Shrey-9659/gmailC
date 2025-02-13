@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdCropSquare } from "react-icons/md";
 import { RiStarSLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import messageContext from "../Context/messageContext";
 
-const Email = () => {
+const Email = ({email}) => {
   const navigate = useNavigate();
+  const {setSelectedEmail} = useContext(messageContext)
   const openMail = () => {
-    navigate("/mail/1234");
+    setSelectedEmail(email)
+    navigate(`/mail/${email._id}`);
   };
   return (
     <div
@@ -23,15 +26,14 @@ const Email = () => {
           <RiStarSLine size={"22px"} />
         </div>
         <div>
-          <h1 className=" font-semibold ">Sample Title</h1>
+          <h1 className=" font-semibold ">{email?.subject}</h1>
         </div>
       </div>
 
       {/* Child 2 */}
       <div className="flex-1 ml-4">
         <p>
-          This is a sample data (Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Aperiam unde sint modi non tempore totam!)
+          {email?.message}
         </p>
       </div>
 

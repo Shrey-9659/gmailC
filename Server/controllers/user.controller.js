@@ -8,11 +8,11 @@ exports.register = async (req, res) => {
     if (!fullname || !email || !password) {
       res
         .status(400)
-        .json({ message: "All fields required", success: "False" });
+        .json({ message: "All fields required", success: false });
     }
     const user = await User.findOne({ email });
     if (user) {
-      res.status(400).json({ message: "User already exist", success: "False" });
+      res.status(400).json({ message: "User already exist", success: false });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const profilePhoto = `https://avatar.iran.liara.run/public`
@@ -24,7 +24,7 @@ exports.register = async (req, res) => {
     });
     res
       .status(201)
-      .json({ message: "Account created successfully", success: "true" });
+      .json({ message: "Account created successfully", success: true });
   } catch (error) {
     console.log(error);
   }
@@ -36,19 +36,19 @@ exports.login = async (req, res) => {
     if (!email || !password) {
       res
         .status(400)
-        .json({ message: "All fields required", success: "False" });
+        .json({ message: "All fields required", success: false });
     }
     const user = await User.findOne({ email });
     if (!user) {
       res
         .status(401)
-        .json({ message: "Incorrect email or password", success: "False" });
+        .json({ message: "Incorrect email or password", success: false });
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       res
         .status(401)
-        .json({ message: "Incorrect email or password", success: "False" });
+        .json({ message: "Incorrect email or password", success: false });
     }
     const tokenData = {
       userId: user._id,
@@ -61,7 +61,7 @@ exports.login = async (req, res) => {
       httpOnly: true,
       sameSite: "strict",
     });
-    res.status(200).json({ message: "Logged in successfully", token, user });
+    res.status(200).json({ message: "Logged in successfully", token, user, success : true });
   } catch (error) {
     console.log(error);
   }

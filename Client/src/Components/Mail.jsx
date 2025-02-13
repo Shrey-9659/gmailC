@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { IoMdArrowBack, IoMdMore } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { BiArchiveIn } from "react-icons/bi";
 import {
   MdDeleteOutline,
@@ -12,9 +12,30 @@ import {
   MdOutlineReport,
   MdOutlineWatchLater,
 } from "react-icons/md";
+import messageContext from "../Context/messageContext";
+import toast from "react-hot-toast";
 
 const Mail = () => {
   const navigate = useNavigate();
+  const {selectedEmail} = useContext(messageContext)
+  const params = useParams()
+  console.log( params.id)
+  console.log(typeof params.id)
+
+  const deleteHandler = async() => {
+    try {
+      const rawData = await fetch(`http://localhost:8080/api/v1/email/${params.id}`, {
+        method: "DELETE",
+        credentials: "include"
+      })
+      const res = await rawData.json()
+      // console.log(res.message)
+      navigate("/")
+      toast.success(res.message);
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div className="flex-1 bg-white rounded-xl mx-5">
       {/* Child 1 */}
@@ -32,7 +53,7 @@ const Mail = () => {
           <div className="p-2 rounded-full hover:bg-gray-200 hover:cursor-pointer">
             <MdOutlineReport size={"20px"} />
           </div>
-          <div className="p-2 rounded-full hover:bg-gray-200 hover:cursor-pointer">
+          <div onClick={deleteHandler} className="p-2 rounded-full hover:bg-gray-200 hover:cursor-pointer">
             <MdDeleteOutline size={"20px"} />
           </div>
           <div className="p-2 rounded-full hover:bg-gray-200 hover:cursor-pointer">
@@ -66,7 +87,7 @@ const Mail = () => {
         {/* Sub Child 1 */}
         <div className="flex justify-between bg-white items-center gap-1">
           <div className="flex items-center gap-2">
-            <h1 className=" text-xl font-medium">Subject</h1>
+            <h1 className=" text-xl font-medium">{selectedEmail.subject}</h1>
             <span className="text-sm bg-gray-200 rounded-md px-2">Inbox</span>
           </div>
           <div className="flex-none text-gray-400 my-5 text-sm">
@@ -77,12 +98,11 @@ const Mail = () => {
         
         <div className="text-gray-500 text-sm">
           <h1 className="">shreykhandelwal@gmail.com</h1>
-          <span>to me</span>
+          <span>to : {selectedEmail.to}</span>
         </div>
         <div className="my-10">
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid
-            fugit quis delectus. Repellat, id veniam?
+            {selectedEmail.message}
           </p>
         </div>
       </div>

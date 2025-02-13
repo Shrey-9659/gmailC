@@ -1,4 +1,4 @@
-import { createElement, useState } from "react";
+import { createElement, useContext, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Navbar from "./Components/Navbar";
@@ -19,18 +19,32 @@ import Signup from "./Components/Signup";
 import Emails from "./Components/Emails";
 import Email from "./Components/Email";
 import Layout from "./Layout";
+import AuthLayout from "./AuthLayout";
+import Profile from "./Components/Profile";
+import userContext from "./Context/userContext";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
+    <>
     <Route path="/" element={<Layout />}>
       <Route path="/" element={<Inbox />} />
       <Route path="/mail/:id" element={<Mail />} />
     </Route>
+    <Route path="/" element={<AuthLayout />}>
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/profile" element={<Profile />} />
+    </Route>
+    </>
   )
 )
 
 
 function App() {
+  const {user} = useContext(userContext)
+  console.log(user)
+
+
   return (
     <div className="bg-[#F6F8FC] h-screen">
      <RouterProvider router={router}/>     

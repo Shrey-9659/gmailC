@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaCaretDown, FaUserFriends } from "react-icons/fa";
 import { IoMdMore, IoMdRefresh } from "react-icons/io";
 import { GoTag } from "react-icons/go";
@@ -12,6 +12,8 @@ import {
   MdKeyboardArrowRight,
 } from "react-icons/md";
 import Emails from "./Emails";
+import userContext from "../Context/userContext";
+import { useNavigate } from "react-router-dom";
 
 const mailType = [
   {
@@ -30,6 +32,9 @@ const mailType = [
 
 const Inbox = () => {
   const [selected, setSelected] = useState(0);
+  const {user, setUser} = useContext(userContext)
+  const navigate = useNavigate()
+
   return (
     <div className=" flex-1 bg-white rounded-xl mx-5 ">
       {/* Child 1 */}
@@ -70,6 +75,7 @@ const Inbox = () => {
         <div className=" flex items-center gap-1">
           {mailType.map((item, index) => (
             <button
+            key={index}
               onClick={() => setSelected(index)}
               className={`${
                 selected === index

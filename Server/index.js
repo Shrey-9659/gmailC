@@ -4,6 +4,7 @@ const connectDB = require("./db/connectDb");
 const cookieParser = require("cookie-parser");
 const cors = require("cors")
 const userRoute = require("./routes/user.routes")
+const emailRoute = require("./routes/email.routes")
 const PORT = 8080;
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(cors(corsOptions))
 
 // routes
 app.use("/api/v1/user", userRoute)
+app.use("/api/v1/email", emailRoute )
 
 
 app.listen(PORT, () => {

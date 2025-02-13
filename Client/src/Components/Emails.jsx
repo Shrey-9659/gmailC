@@ -1,16 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Email from './Email'
+import useGetAllEmails from '../hooks/useGetAllEmails'
+import messageContext from '../Context/messageContext'
 
 const Emails = () => {
+  const {email} = useContext(messageContext)
+  useGetAllEmails();
   return (
     <div>
-        <Email />
-        <Email />
-        <Email />
-        <Email />
-        <Email />
-        <Email />
-        <Email />
+      {email && email?.map((mail) => <Email key={mail._id} email={mail}/>)}
     </div>
   )
 }

@@ -57,15 +57,14 @@ const Sidebar = () => {
 
       <div className=" text-gray-600">
         {sidebarItems.map((item, index) => (
-          <>
             <div
+            key={item.text}
               className=" flex items-center pl-6 py-1 rounded-r-full gap-4 my-2
          hover:bg-gray-200 hover:cursor-pointer"
             >
               {item.icon}
               <p>{item.text}</p>
             </div>
-          </>
         ))}
       </div>
     </div>
