@@ -11,7 +11,7 @@ const Signup = () => {
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     try {
-      fetch("http://localhost:8080/api/v1/user/register", {
+      fetch("https://gmail-clone-ggn9.onrender.com/api/v1/user/register", {
         method: "POST",
         credentials : "include",
         headers: { "Content-Type": "application/json" },

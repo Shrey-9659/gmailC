@@ -19,7 +19,7 @@ useEffect(() => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const rawData = await fetch("http://localhost:8080/api/v1/user/login", {
+      const rawData = await fetch("https://gmail-clone-ggn9.onrender.com/api/v1/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials : "include",

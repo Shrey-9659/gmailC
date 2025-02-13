@@ -24,7 +24,7 @@ const Mail = () => {
 
   const deleteHandler = async() => {
     try {
-      const rawData = await fetch(`http://localhost:8080/api/v1/email/${params.id}`, {
+      const rawData = await fetch(`https://gmail-clone-ggn9.onrender.com/api/v1/email/${params.id}`, {
         method: "DELETE",
         credentials: "include"
       })

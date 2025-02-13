@@ -9,7 +9,7 @@ const SendEmail = () => {
     const [subject, setSubject] = useState("")
     const [message, setMessage] = useState("")
     const handleSubmit = () => {
-        fetch("http://localhost:8080/api/v1/email/create", {
+        fetch("https://gmail-clone-ggn9.onrender.com/api/v1/email/create", {
             method: "POST",
             headers : {"Content-Type" : "application/json"},
             credentials: "include",

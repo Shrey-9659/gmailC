@@ -6,7 +6,7 @@ const useGetAllEmails = () => {
     useEffect(() => {
         const fetchEmail = async () => {
             try {
-                const rawData = await fetch("http://localhost:8080/api/v1/email/getallemail",{
+                const rawData = await fetch("https://gmail-clone-ggn9.onrender.com/api/v1/email/getallemail",{
                     credentials: "include"
                 })
                 const response = await rawData.json()

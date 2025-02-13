@@ -10,7 +10,7 @@ const Profile = () => {
 
     const handleLogoutSubmit = async (e) => {
         e.preventDefault();
-        const rawData = await fetch("http://localhost:8080/api/v1/user/logout", {
+        const rawData = await fetch("https://gmail-clone-ggn9.onrender.com/api/v1/user/logout", {
             credentials: "include"
         })
         const res = await rawData.json();
